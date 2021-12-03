@@ -1,0 +1,13 @@
+.vote-cont {
+  .vote {
+    margin: 0 5px;
+    &__bar {
+      margin: 10px;
+      display: flex;
+      justify-content: space-between;
+      button {
+        border-radius: 100%;
+      }
+    }
+  }
+}

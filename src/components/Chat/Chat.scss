@@ -1,0 +1,49 @@
+.chat-cont {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+
+  .chat {
+    &__icon {
+      padding: 0.5rem;
+      border: 1px solid black;
+      border-radius: 50% 50% 0 0;
+      border-width: 1px 1px 0px 1px;
+      position: fixed;
+      right: 27px;
+      bottom: 0;
+      width: 75px;
+
+      svg {
+        font-size: 50px;
+      }
+      &.active {
+        bottom: 250px;
+      }
+    }
+    &__convo {
+      margin: 0;
+      height: 200px;
+      overflow: scroll;
+      padding: 0.2rem;
+      border: 1px solid black;
+      border-width: 1px 0px 0px 0px;
+      div {
+        // height: 150px;
+      }
+      .message {
+      }
+    }
+    &__input {
+      height: 50px;
+      border: 1px solid black;
+      border-width: 1px 0px 0px 0px;
+      input {
+        border: 1px solid black;
+        border-radius: 50px;
+        margin: 5px;
+        width: 95%;
+      }
+    }
+  }
+}
