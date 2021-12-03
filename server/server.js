@@ -8,7 +8,7 @@ const io = require("socket.io")(server, {
     methods: ["GET", "POST"],
   },
 });
-const PORT = 1917;
+const PORT = 8080;
 const storagePath = "./server/storage.json";
 const fakeGroup = [
   {
@@ -66,6 +66,6 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(PORT, () => {
+server.listen(process.env.PORT || 8080, () => {
   console.log(`Listening on port ${PORT}`);
 });

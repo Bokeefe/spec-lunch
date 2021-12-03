@@ -5,7 +5,7 @@ import { DefaultEventsMap } from "socket.io/dist/typed-events";
 import { Chat } from "./components/Chat/Chat";
 import { Lunch } from "./components/Lunch/Lunch";
 
-const ENDPOINT = "http://127.0.0.1:1917";
+const ENDPOINT = "http://127.0.0.1:8080";
 
 function App() {
   const [socket, setSocket] = useState(
