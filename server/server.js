@@ -42,6 +42,7 @@ const fakeGroup = [
     returnTime: "0",
   },
 ];
+
 io.on("connection", (socket) => {
   socket.on("getLunch", (lunch) => {
     console.log(lunch, fakeGroup);
