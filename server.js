@@ -1,10 +1,15 @@
-const server = require("http").createServer();
-const storage = require("./storage.json");
+var app = require("express")();
+const express = require("express");
+const server = require("http").createServer(app);
+const storage = require("./server/storage.json");
 const fs = require("fs");
 const faker = require("faker");
+console.log(__dirname);
+app.use(express.static(__dirname + "/build"));
+
 const io = require("socket.io")(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "http://localhost:8080",
     methods: ["GET", "POST"],
   },
 });
@@ -64,6 +69,9 @@ io.on("connection", (socket) => {
   socket.on("disconnect", (socket) => {
     console.log("Client disconnected", socket);
   });
+});
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/index.html");
 });
 
 server.listen(process.env.PORT || 8080, () => {
