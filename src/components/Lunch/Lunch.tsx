@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { Rides } from "../Rides/Rides";
 import { Vote } from "../Vote/Vote";
-import "./Lunch.scss";
+import "./Lunch.css";
 
 interface LunchProps {
   socket: any;
@@ -13,7 +14,6 @@ export const Lunch: React.FC<LunchProps> = ({ socket, lunchUser }) => {
   useEffect(() => {
     socket.emit("getLunch", lunchUser);
     socket.on("lunchRes", (lunches: any) => {
-      console.log(lunches);
       setLunch(lunches);
     });
   }, []);
@@ -24,8 +24,11 @@ export const Lunch: React.FC<LunchProps> = ({ socket, lunchUser }) => {
       {lunches
         .filter((lunch: any) => lunch.proposedPlace.length)
         .map((lunch) => (
-          <Vote socket={socket} vote={lunch} />
+          <>
+            <Vote socket={socket} vote={lunch} key={Math.random().toString()} />
+          </>
         ))}
+      {!!lunches && <Rides rides={lunches} />}
     </div>
   );
 };

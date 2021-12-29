@@ -1,9 +1,9 @@
 import { UserForm } from "./components/UserForm/UserForm";
 import io, { Socket } from "socket.io-client";
 import { useEffect, useState } from "react";
-import { DefaultEventsMap } from "socket.io/dist/typed-events";
 import { Chat } from "./components/Chat/Chat";
 import { Lunch } from "./components/Lunch/Lunch";
+import "./App.css";
 
 const ENDPOINT = "http://127.0.0.1:8080";
 
@@ -20,7 +20,6 @@ function App() {
   }, []);
 
   const handleUserForm = (form: any) => {
-    console.log(form);
     setLunchUser(form);
   };
 

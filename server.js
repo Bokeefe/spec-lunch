@@ -9,7 +9,7 @@ app.use(express.static(__dirname + "/build"));
 
 const io = require("socket.io")(server, {
   cors: {
-    origin: "http://localhost:8080",
+    origin: "http://localhost:3000",
     methods: ["GET", "POST"],
   },
 });
@@ -21,30 +21,35 @@ const fakeGroup = [
     passengers: "0",
     proposedPlace: faker.random.word(),
     returnTime: "0",
+    votes: 0,
   },
   {
     name: faker.name.firstName(),
     passengers: "2",
     proposedPlace: `${faker.random.word()} shack`,
     returnTime: "0",
+    votes: 0,
   },
   {
     name: faker.name.firstName(),
     passengers: "3",
     proposedPlace: `${faker.name.lastName()}'s ${faker.random.word()}`,
     returnTime: "100",
+    votes: 0,
   },
   {
     name: faker.name.firstName(),
     passengers: "0",
     proposedPlace: `${faker.name.lastName()}'s ${faker.random.word()} house`,
     returnTime: "1230",
+    votes: 0,
   },
   {
     name: faker.name.firstName(),
     passengers: "0",
     proposedPlace: faker.random.word(),
     returnTime: "0",
+    votes: 0,
   },
 ];
 

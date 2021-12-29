@@ -5,7 +5,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import "./Vote.scss";
+import "./Vote.css";
 
 interface VoteProps {
   socket: any;

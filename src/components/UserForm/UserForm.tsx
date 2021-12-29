@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight, faHotdog } from "@fortawesome/free-solid-svg-icons";
 import React, { FormEvent, useEffect, useState } from "react";
-import "./UserForm.scss";
+import "./UserForm.css";
 
 interface UserFormProps {
   onSubmit: Function;
