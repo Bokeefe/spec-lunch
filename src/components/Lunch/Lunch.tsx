@@ -28,7 +28,7 @@ export const Lunch: React.FC<LunchProps> = ({ socket, lunchUser }) => {
             <Vote socket={socket} vote={lunch} key={Math.random().toString()} />
           </>
         ))}
-      {!!lunches && <Rides rides={lunches} />}
+      {lunches.length && <Rides rides={lunches} />}
     </div>
   );
 };
