@@ -1,6 +1,9 @@
 {
   "name": "spectrum-lunch",
   "version": "0.1.0",
+  "engines": {
+    "node": "14.x"
+  },
   "private": true,
   "dependencies": {
     "@babel/core": "7.12.3",
