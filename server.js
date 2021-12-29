@@ -52,12 +52,28 @@ const fakeGroup = [
     votes: 0,
   },
 ];
+const group = [];
 
 io.on("connection", (socket) => {
+  const useMock = socket.request.headers.referer.startsWith("http://localhost");
   socket.on("getLunch", (lunch) => {
-    console.log(lunch, fakeGroup);
-    fakeGroup.push(lunch);
-    io.emit("lunchRes", fakeGroup);
+    if (useMock) {
+      const update = fakeGroup.findIndex((group) => group.name === lunch.name);
+      if (update !== -1) {
+        fakeGroup[update] = lunch;
+      } else {
+        fakeGroup.push(lunch);
+      }
+    } else {
+      const update = group.findIndex((group) => group.name === lunch.name);
+      if (update !== -1) {
+        group[update] = lunch;
+      } else {
+        group.push(lunch);
+      }
+    }
+
+    io.emit("lunchRes", useMock ? fakeGroup : group);
   });
 
   socket.on("write", () => {

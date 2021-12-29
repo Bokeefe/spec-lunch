@@ -20,6 +20,8 @@ export const Lunch: React.FC<LunchProps> = ({ socket, lunchUser }) => {
 
   return (
     <div className="lunch-cont">
+      <span>extremely beta version TODO connect voting</span>
+      <br />
       <strong>Lunch Ideas:</strong>
       {lunches
         .filter((lunch: any) => lunch.proposedPlace.length)
