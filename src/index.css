@@ -12,13 +12,6 @@ code {
     monospace;
 }
 
-input,
-select,
-button {
-  font-size: 85px;
-  border-radius: 10px 0;
-  padding: 5px 10px;
-}
 ::-webkit-input-placeholder {
   text-align: center;
 }
@@ -40,6 +33,7 @@ input:-moz-placeholder {
   margin: 10px 0;
   font-size: 24px;
 }
+
 .field-cont svg {
   margin: 0 8px;
 }

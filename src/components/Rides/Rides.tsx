@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import "./Rides.css";
 interface RidesProps {
   rides: any[];
 }
@@ -26,6 +26,7 @@ export const Rides: React.FC<RidesProps> = ({ rides }) => {
               key={
                 ride.name.trim() + Math.floor(Math.random() * 1000).toString()
               }
+              className="ride-cont"
             >
               {ride.passengers > 0
                 ? `${ride.name} can take ${ride.passengers}`
