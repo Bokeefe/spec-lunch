@@ -1,7 +1,7 @@
 import { faComments } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { LegacyRef, useEffect, useState } from "react";
-import "./Chat.scss";
+import "./Chat.css";
 
 interface ChatProps {
   socket: any;

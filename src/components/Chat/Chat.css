@@ -1,0 +1,46 @@
+.chat-cont {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: white;
+}
+
+.chat__convo {
+  height: 200px;
+  overflow: scroll;
+  padding: 0.2rem;
+  border: 1px solid black;
+  border-width: 1px 0px 0px 0px;
+}
+
+.chat__input {
+  height: 50px;
+  border: 1px solid black;
+  border-width: 1px 0px 0px 0px;
+}
+
+.chat__icon {
+  padding: 0.5rem;
+  border: 1px solid black;
+  border-radius: 50% 50% 0 0;
+  border-width: 1px 1px 0px 1px;
+  position: fixed;
+  right: 27px;
+  bottom: 0;
+  width: 75px;
+}
+
+.chat__icon svg {
+  font-size: 50px;
+}
+.chat__icon.active {
+  bottom: 250px !important;
+}
+.chat__input {
+  padding: 5px;
+}
+input {
+  border: 1px solid black;
+  border-radius: 50px;
+  width: 95%;
+}
