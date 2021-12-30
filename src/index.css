@@ -37,3 +37,46 @@ input:-moz-placeholder {
 .field-cont svg {
   margin: 0 8px;
 }
+body {
+  height: 100vh;
+  width: 100%;
+  color: white;
+  background: linear-gradient(130deg, #0096a0, #0067d3, #73dce1);
+  background-size: 300%;
+  -webkit-animation: Animation 15s ease infinite;
+  -moz-animation: Animation 15s ease infinite;
+  animation: Animation 15s ease infinite;
+}
+@-webkit-keyframes Animation {
+  0% {
+    background-position: 10% 0%;
+  }
+  50% {
+    background-position: 91% 100%;
+  }
+  100% {
+    background-position: 10% 0%;
+  }
+}
+@-moz-keyframes Animation {
+  0% {
+    background-position: 10% 0%;
+  }
+  50% {
+    background-position: 91% 100%;
+  }
+  100% {
+    background-position: 10% 0%;
+  }
+}
+@keyframes Animation {
+  0% {
+    background-position: 10% 0%;
+  }
+  50% {
+    background-position: 91% 100%;
+  }
+  100% {
+    background-position: 10% 0%;
+  }
+}

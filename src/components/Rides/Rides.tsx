@@ -14,12 +14,12 @@ export const Rides: React.FC<RidesProps> = ({ rides }) => {
       return 0;
     });
     setSortedRides({ sortedRides: tempRides });
-    console.log(rides);
   }, []);
 
   return (
     <div>
       <div>
+        <strong>Who is in:</strong>
         {!!sortedRides.sortedRides &&
           sortedRides.sortedRides.map((ride: any) => (
             <p

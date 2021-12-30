@@ -1,5 +1,6 @@
 main {
   max-width: 425px;
-  max-height: 812px;
   margin: 0 auto;
+  padding: 10px;
+  color: white;
 }

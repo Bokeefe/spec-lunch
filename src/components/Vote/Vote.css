@@ -11,3 +11,6 @@
 .vote_bar button {
   border-radius: 100%;
 }
+button {
+  width: 34px;
+}

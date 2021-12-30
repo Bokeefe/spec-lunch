@@ -90,7 +90,7 @@
     "workbox-webpack-plugin": "5.1.4"
   },
   "scripts": {
-    "start": "node scripts/start.js",
+    "start": "node scripts/start.js & nodemon server.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js"
   },
@@ -172,5 +172,9 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "concurrently": "^6.5.1",
+    "nodemon": "^2.0.15"
   }
 }

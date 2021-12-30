@@ -53,6 +53,7 @@ const fakeGroup = [
   },
 ];
 const group = [];
+const votes = {};
 
 io.on("connection", (socket) => {
   const useMock = socket.request.headers.referer.startsWith("http://localhost");
@@ -85,6 +86,11 @@ io.on("connection", (socket) => {
 
   socket.on("sendMessage", (message) => {
     io.emit("newMessage", message);
+  });
+
+  socket.on("vote", (vote) => {
+    votes[vote.name] = vote.vote;
+    io.emit("newVotes", votes);
   });
 
   socket.on("disconnect", (socket) => {

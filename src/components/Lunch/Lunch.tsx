@@ -27,7 +27,12 @@ export const Lunch: React.FC<LunchProps> = ({ socket, lunchUser }) => {
         .filter((lunch: any) => lunch.proposedPlace.length)
         .map((lunch) => (
           <>
-            <Vote socket={socket} vote={lunch} key={Math.random().toString()} />
+            <Vote
+              socket={socket}
+              vote={lunch}
+              key={Math.random().toString()}
+              lunchUser={lunchUser}
+            />
           </>
         ))}
       {lunches.length && <Rides rides={lunches} />}

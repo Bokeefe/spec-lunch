@@ -47,7 +47,7 @@ export const UserForm: React.FC<UserFormProps> = (props) => {
     <>
       <div className="user-form">
         <form onSubmit={handleSubmit}>
-          <div className="field-cont">
+          <div className="field-cont container">
             <h1>So you wanna get lunch {state.name}?</h1>
             <input
               type="text"
@@ -56,7 +56,7 @@ export const UserForm: React.FC<UserFormProps> = (props) => {
               onChange={handleNameChange}
             />
           </div>
-          <div className="field-cont">
+          <div className="field-cont container">
             <label htmlFor="passengers">
               How many people can fit in your car?
             </label>
@@ -74,7 +74,7 @@ export const UserForm: React.FC<UserFormProps> = (props) => {
               <option value="6">6</option>
             </select>
           </div>
-          <div className="field-cont">
+          <div className="field-cont container">
             <label htmlFor="place">
               Do you have a place in mind? (optional)
             </label>
@@ -85,7 +85,7 @@ export const UserForm: React.FC<UserFormProps> = (props) => {
               onChange={(e) => handleProposedPlaceChange(e.target.value)}
             />
           </div>
-          <div className="field-cont">
+          <div className="field-cont container">
             <label htmlFor="meeting">Need to be back by:</label>
             <select
               name="meeting"
@@ -101,7 +101,7 @@ export const UserForm: React.FC<UserFormProps> = (props) => {
               <option value="6">2:00</option>
             </select>
           </div>
-          <div className="field-cont">
+          <div className="field-cont container">
             <button type="submit">
               <FontAwesomeIcon icon={faHotdog} />
               <FontAwesomeIcon icon={faChevronRight} />
