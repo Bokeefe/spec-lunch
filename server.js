@@ -52,29 +52,35 @@ const fakeGroup = [
     votes: 0,
   },
 ];
-const group = [];
+const lunchGroup = [];
 const votes = {};
 
 io.on("connection", (socket) => {
-  const useMock = socket.request.headers.referer.startsWith("http://localhost");
+  // const useMock = socket.request.headers.referer.startsWith("http://localhost");
+  const useMock = false;
   socket.on("getLunch", (lunch) => {
     if (useMock) {
-      const update = fakeGroup.findIndex((group) => group.name === lunch.name);
+      const update = fakeGroup.findIndex(
+        (lunchGroup) => lunchGroup.name === lunch.name
+      );
       if (update !== -1) {
         fakeGroup[update] = lunch;
       } else {
         fakeGroup.push(lunch);
       }
     } else {
-      const update = group.findIndex((group) => group.name === lunch.name);
+      const update = lunchGroup.findIndex(
+        (lunchGroup) => lunchGroup.name === lunch.name
+      );
       if (update !== -1) {
-        group[update] = lunch;
+        lunchGroup[update] = lunch;
       } else {
-        group.push(lunch);
+        lunchGroup.push(lunch);
       }
+      console.log(">>>", lunch, lunchGroup);
     }
 
-    io.emit("lunchRes", useMock ? fakeGroup : group);
+    io.emit("lunchRes", useMock ? fakeGroup : lunchGroup);
   });
 
   socket.on("write", () => {
@@ -90,7 +96,15 @@ io.on("connection", (socket) => {
 
   socket.on("vote", (vote) => {
     votes[vote.name] = vote.vote;
-    io.emit("newVotes", votes);
+    const voteTally = {};
+    for (const vote in votes) {
+      if (voteTally[votes[vote]] === undefined) {
+        voteTally[votes[vote]] = 1;
+      } else {
+        voteTally[votes[vote]]++;
+      }
+    }
+    io.emit("newVotes", voteTally);
   });
 
   socket.on("disconnect", (socket) => {
