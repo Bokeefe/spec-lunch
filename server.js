@@ -15,6 +15,7 @@ const io = require("socket.io")(server, {
 });
 const PORT = 8080;
 const storagePath = "./server/storage.json";
+let lunchGroup = [];
 const fakeGroup = [
   {
     name: faker.name.firstName(),
@@ -34,14 +35,14 @@ const fakeGroup = [
     name: faker.name.firstName(),
     passengers: "3",
     proposedPlace: `${faker.name.lastName()}'s ${faker.random.word()}`,
-    returnTime: "100",
+    returnTime: "2",
     votes: 0,
   },
   {
     name: faker.name.firstName(),
     passengers: "0",
     proposedPlace: `${faker.name.lastName()}'s ${faker.random.word()} house`,
-    returnTime: "1230",
+    returnTime: "4",
     votes: 0,
   },
   {
@@ -52,35 +53,25 @@ const fakeGroup = [
     votes: 0,
   },
 ];
-const lunchGroup = [];
 const votes = {};
+let returnTime = 0;
 
 io.on("connection", (socket) => {
-  // const useMock = socket.request.headers.referer.startsWith("http://localhost");
-  const useMock = false;
+  const useMock = socket.request.headers.referer.startsWith("http://localhost");
+  if (useMock) lunchGroup = fakeGroup;
+
   socket.on("getLunch", (lunch) => {
-    if (useMock) {
-      const update = fakeGroup.findIndex(
-        (lunchGroup) => lunchGroup.name === lunch.name
-      );
-      if (update !== -1) {
-        fakeGroup[update] = lunch;
-      } else {
-        fakeGroup.push(lunch);
-      }
+    // console.log(typeof lunch.returnTime, lunch.returnTime);
+    const update = lunchGroup.findIndex(
+      (lunchGroup) => lunchGroup.name === lunch.name
+    );
+    if (update !== -1) {
+      lunchGroup[update] = lunch;
     } else {
-      const update = lunchGroup.findIndex(
-        (lunchGroup) => lunchGroup.name === lunch.name
-      );
-      if (update !== -1) {
-        lunchGroup[update] = lunch;
-      } else {
-        lunchGroup.push(lunch);
-      }
-      console.log(">>>", lunch, lunchGroup);
+      lunchGroup.push(lunch);
     }
 
-    io.emit("lunchRes", useMock ? fakeGroup : lunchGroup);
+    io.emit("lunchRes", lunchGroup);
   });
 
   socket.on("write", () => {
@@ -108,7 +99,8 @@ io.on("connection", (socket) => {
   });
 
   socket.on("disconnect", (socket) => {
-    console.log("Client disconnected", socket);
+    console.log("Client disconnected");
+    const everyoneLeft = io.sockets.adapter.rooms.size === 0;
   });
 });
 app.get("/", (req, res) => {

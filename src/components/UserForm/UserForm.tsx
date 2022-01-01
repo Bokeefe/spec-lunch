@@ -85,7 +85,7 @@ export const UserForm: React.FC<UserFormProps> = (props) => {
               onChange={(e) => handleProposedPlaceChange(e.target.value)}
             />
           </div>
-          {/* <div className="field-cont container">
+          <div className="field-cont container">
             <label htmlFor="meeting">Need to be back by:</label>
             <select
               name="meeting"
@@ -100,7 +100,7 @@ export const UserForm: React.FC<UserFormProps> = (props) => {
               <option value="5">1:30</option>
               <option value="6">2:00</option>
             </select>
-          </div> */}
+          </div>
           <div className="field-cont container">
             <button type="submit" className="btn btn-light">
               <FontAwesomeIcon icon={faHotdog} />
