@@ -98,7 +98,6 @@ io.on("connection", (socket) => {
           ? voteTally[lunch.proposedPlace]
           : 0;
     });
-    console.log(lunchGroup);
     io.emit("lunchRes", lunchGroup);
   });
 

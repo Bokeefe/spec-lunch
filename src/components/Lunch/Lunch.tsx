@@ -31,6 +31,9 @@ export const Lunch: React.FC<LunchProps> = ({ socket, lunchUser }) => {
       </p>
       <strong>Lunch Ideas:</strong>
       {lunches
+        .sort((a: any, b: any) =>
+          a.proposedPlace.localeCompare(b.proposedPlace)
+        )
         .filter((lunch: any) => lunch.proposedPlace.length)
         .map((lunch) => (
           <>
