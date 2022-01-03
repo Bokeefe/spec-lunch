@@ -16,6 +16,7 @@ const io = require("socket.io")(server, {
 const PORT = 8080;
 const storagePath = "./server/storage.json";
 let lunchGroup = [];
+let votes = {};
 const fakeGroup = [
   {
     name: faker.name.firstName(),
@@ -53,11 +54,16 @@ const fakeGroup = [
     votes: 0,
   },
 ];
-const votes = {};
 
-io.on("connection", (socket) => {
+const initVars = (socket) => {
+  lunchGroup = [];
+  votes = {};
   const useMock = socket.request.headers.referer.startsWith("http://localhost");
   if (useMock) lunchGroup = fakeGroup;
+};
+
+io.on("connection", (socket) => {
+  initVars(socket);
 
   socket.on("getLunch", (lunch) => {
     const update = lunchGroup.findIndex(
@@ -104,6 +110,9 @@ io.on("connection", (socket) => {
   socket.on("disconnect", (socket) => {
     console.log("Client disconnected");
     const everyoneLeft = io.sockets.adapter.rooms.size === 0;
+    if (everyoneLeft) {
+      initVars(socket);
+    }
   });
 });
 app.get("/", (req, res) => {
