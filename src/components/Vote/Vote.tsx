@@ -4,12 +4,7 @@ import {
   faStarAndCrescent,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, {
-  ButtonHTMLAttributes,
-  DetailedHTMLProps,
-  useEffect,
-  useState,
-} from "react";
+import React, { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
 import "./Vote.css";
 
 interface VoteProps {
@@ -17,17 +12,8 @@ interface VoteProps {
   vote: any;
   lunchUser: any;
 }
-// const initialState ={ [key: string]: number }
 
 export const Vote: React.FC<VoteProps> = ({ socket, vote, lunchUser }) => {
-  const [votes, setVotes] = useState(0);
-
-  useEffect(() => {
-    socket.on("newVotes", (votes: any) => {
-      handleNewVotes(votes);
-    });
-  });
-
   const handleVote = (
     proposedPlace: DetailedHTMLProps<
       ButtonHTMLAttributes<HTMLButtonElement>,
@@ -35,12 +21,6 @@ export const Vote: React.FC<VoteProps> = ({ socket, vote, lunchUser }) => {
     >
   ) => {
     socket.emit("vote", { vote: proposedPlace, name: lunchUser.name });
-  };
-
-  const handleNewVotes = (incomingVotes: any) => {
-    if (incomingVotes[vote.proposedPlace] !== undefined) {
-      setVotes(incomingVotes[vote.proposedPlace]);
-    }
   };
 
   return (
@@ -51,7 +31,7 @@ export const Vote: React.FC<VoteProps> = ({ socket, vote, lunchUser }) => {
           className="vote-btn btn btn-primary"
           onClick={() => handleVote(vote.proposedPlace)}
         >
-          {votes !== 0 ? votes : <FontAwesomeIcon icon={faStar} />}
+          {vote.votes !== 0 ? vote.votes : <FontAwesomeIcon icon={faStar} />}
         </button>
       </div>
     </div>

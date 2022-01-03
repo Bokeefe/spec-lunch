@@ -41,11 +41,11 @@ body {
   height: 100vh;
   width: 100%;
   color: white;
-  background: linear-gradient(130deg, #0096a0, #0067d3, #73dce1);
+  background: linear-gradient(130deg, #0096a0, #0067d3, #aceff3);
   background-size: 300%;
-  -webkit-animation: Animation 15s ease infinite;
-  -moz-animation: Animation 15s ease infinite;
-  animation: Animation 15s ease infinite;
+  -webkit-animation: Animation 10s ease infinite;
+  -moz-animation: Animation 10s ease infinite;
+  animation: Animation 10s ease infinite;
 }
 @-webkit-keyframes Animation {
   0% {

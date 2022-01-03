@@ -54,23 +54,20 @@ const fakeGroup = [
   },
 ];
 const votes = {};
-let returnTime = 0;
 
 io.on("connection", (socket) => {
   const useMock = socket.request.headers.referer.startsWith("http://localhost");
   if (useMock) lunchGroup = fakeGroup;
 
   socket.on("getLunch", (lunch) => {
-    // console.log(typeof lunch.returnTime, lunch.returnTime);
     const update = lunchGroup.findIndex(
       (lunchGroup) => lunchGroup.name === lunch.name
     );
     if (update !== -1) {
       lunchGroup[update] = lunch;
     } else {
-      lunchGroup.push(lunch);
+      lunchGroup.push({ ...lunch, votes: 0 });
     }
-
     io.emit("lunchRes", lunchGroup);
   });
 
@@ -95,9 +92,14 @@ io.on("connection", (socket) => {
         voteTally[votes[vote]]++;
       }
     }
-    console.log(votes[vote.name], votes, voteTally);
-
-    io.emit("newVotes", voteTally);
+    lunchGroup.forEach((lunch) => {
+      lunch.votes =
+        voteTally[lunch.proposedPlace] !== undefined
+          ? voteTally[lunch.proposedPlace]
+          : 0;
+    });
+    console.log(lunchGroup);
+    io.emit("lunchRes", lunchGroup);
   });
 
   socket.on("disconnect", (socket) => {
