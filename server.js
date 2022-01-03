@@ -109,12 +109,13 @@ io.on("connection", (socket) => {
 
   socket.on("disconnect", (socket) => {
     console.log("Client disconnected");
-    const everyoneLeft = io.sockets.adapter.rooms.size === 0;
-    if (everyoneLeft) {
-      initVars(socket);
-    }
+    // const everyoneLeft = io.sockets.adapter.rooms.size === 0;
+    // if (everyoneLeft) {
+    //   initVars(socket);
+    // }
   });
 });
+
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html");
 });
