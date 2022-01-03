@@ -55,15 +55,14 @@ const fakeGroup = [
   },
 ];
 
-const initVars = (socket) => {
+const initVars = () => {
   lunchGroup = [];
   votes = {};
-  const useMock = socket.request.headers.referer.startsWith("http://localhost");
-  if (useMock) lunchGroup = fakeGroup;
 };
 
 io.on("connection", (socket) => {
-  initVars(socket);
+  const useMock = socket.request.headers.referer.startsWith("http://localhost");
+  if (useMock) lunchGroup = fakeGroup;
 
   socket.on("getLunch", (lunch) => {
     const update = lunchGroup.findIndex(
@@ -109,10 +108,10 @@ io.on("connection", (socket) => {
 
   socket.on("disconnect", (socket) => {
     console.log("Client disconnected");
-    // const everyoneLeft = io.sockets.adapter.rooms.size === 0;
-    // if (everyoneLeft) {
-    //   initVars(socket);
-    // }
+    const everyoneLeft = io.sockets.adapter.rooms.size === 0;
+    if (everyoneLeft) {
+      initVars();
+    }
   });
 });
 
