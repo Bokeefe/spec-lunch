@@ -17,10 +17,10 @@ export const Lunch: React.FC<LunchProps> = ({ socket, lunchUser }) => {
     socket.emit("getLunch", lunchUser);
     socket.on("lunchRes", (lunches: any) => {
       setLunch(lunches);
-      let returnTime = lunches
-        .filter((lunch: any) => parseInt(lunch.returnTime) !== 0)
-        .map((lunch: any) => lunch.returnTime);
-      setReturnTime(ReturnTime[Math.min(...returnTime)]);
+      let newReturnTime = lunches.map((lunch: any) =>
+        parseInt(lunch.returnTime)
+      );
+      setReturnTime(ReturnTime[Math.min(...newReturnTime)]);
     });
   }, []);
 

@@ -22,14 +22,14 @@ const fakeGroup = [
     name: faker.name.firstName(),
     passengers: "0",
     proposedPlace: faker.random.word(),
-    returnTime: "0",
+    returnTime: "8",
     votes: 0,
   },
   {
     name: faker.name.firstName(),
     passengers: "2",
     proposedPlace: `${faker.random.word()} shack`,
-    returnTime: "0",
+    returnTime: "8",
     votes: 0,
   },
   {
@@ -50,7 +50,7 @@ const fakeGroup = [
     name: faker.name.firstName(),
     passengers: "0",
     proposedPlace: faker.random.word(),
-    returnTime: "0",
+    returnTime: "8",
     votes: 0,
   },
 ];

@@ -40,6 +40,7 @@ export const UserForm: React.FC<UserFormProps> = (props) => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    console.log(state);
     props.onSubmit(state);
   };
 
@@ -92,13 +93,14 @@ export const UserForm: React.FC<UserFormProps> = (props) => {
               id="meeting"
               onChange={(e) => handleReturnTimeChange(e.target.value)}
             >
-              <option value="0">Never!</option>
+              <option value="8">Never!</option>
               <option value="1">12:30</option>
               <option value="2">12:45</option>
               <option value="3">1:00</option>
               <option value="4">1:15</option>
               <option value="5">1:30</option>
-              <option value="6">2:00</option>
+              <option value="6">1:45</option>
+              <option value="7">2:00</option>
             </select>
           </div>
           <div className="field-cont container">
