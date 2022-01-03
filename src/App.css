@@ -4,3 +4,23 @@ main {
   padding: 10px;
   color: white;
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+h5,
+strong {
+  font-family: "Spartan";
+  font-weight: 900;
+}
+
+p,
+span {
+  font-family: "Spartan";
+}
+
+@font-face {
+  font-family: "Spartan";
+  src: URL("/src/shared/Spartan-Light.ttf") format("truetype");
+}

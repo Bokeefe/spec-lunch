@@ -95,6 +95,8 @@ io.on("connection", (socket) => {
         voteTally[votes[vote]]++;
       }
     }
+    console.log(votes[vote.name], votes, voteTally);
+
     io.emit("newVotes", voteTally);
   });
 

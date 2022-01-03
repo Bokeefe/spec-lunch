@@ -12,5 +12,6 @@
   border-radius: 100%;
 }
 .vote-btn {
-  width: 34px;
+  width: 44px;
+  border: 1px solid rgb(255, 255, 255);
 }

@@ -48,7 +48,7 @@ export const Vote: React.FC<VoteProps> = ({ socket, vote, lunchUser }) => {
       <div className="vote__bar">
         <span>{vote.proposedPlace}</span>
         <button
-          className="vote-btn"
+          className="vote-btn btn btn-primary"
           onClick={() => handleVote(vote.proposedPlace)}
         >
           {votes !== 0 ? votes : <FontAwesomeIcon icon={faStar} />}
