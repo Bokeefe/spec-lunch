@@ -40,7 +40,6 @@ export const UserForm: React.FC<UserFormProps> = (props) => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(state);
     props.onSubmit(state);
   };
 

@@ -22,7 +22,7 @@ export const Lunch: React.FC<LunchProps> = ({ socket, lunchUser }) => {
       );
       setReturnTime(ReturnTime[Math.min(...newReturnTime)]);
     });
-  }, []);
+  }, [socket, lunchUser]);
 
   return (
     <div className="lunch-cont">

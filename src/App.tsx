@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Chat } from "./components/Chat/Chat";
 import { Lunch } from "./components/Lunch/Lunch";
 import "./App.css";
+import { CountDown } from "./components/CountDown/CountDown";
 
 const ENDPOINT = "http://127.0.0.1:8080";
 
@@ -17,6 +18,9 @@ function App() {
     socket.on("connection", () => {
       console.log("connected");
     });
+    socket.on("endVote", (finalVote) => {
+      window.confirm(finalVote);
+    });
   }, []);
 
   const handleUserForm = (form: any) => {
@@ -26,6 +30,7 @@ function App() {
   return (
     <div className="App">
       <main>
+        {<CountDown socket={socket} />}
         {!lunchUser.name && <UserForm onSubmit={handleUserForm} />}
         {lunchUser.name && <Lunch socket={socket} lunchUser={lunchUser} />}
         {lunchUser.name && <Chat socket={socket} name={lunchUser.name} />}

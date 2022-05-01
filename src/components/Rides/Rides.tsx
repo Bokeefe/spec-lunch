@@ -14,7 +14,7 @@ export const Rides: React.FC<RidesProps> = ({ rides }) => {
       return 0;
     });
     setSortedRides({ sortedRides: tempRides });
-  }, []);
+  }, [rides]);
 
   return (
     <div>
