@@ -16,7 +16,7 @@ const PORT = 8080;
 const storagePath = "./server/storage.json";
 let lunchGroup = [];
 let votes = {};
-const timeSetting = 600;
+const timeSetting = 60;
 let secondsLeft = timeSetting;
 
 const initVars = () => {

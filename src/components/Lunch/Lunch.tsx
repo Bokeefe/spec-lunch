@@ -31,9 +31,11 @@ export const Lunch: React.FC<LunchProps> = ({ socket, lunchUser }) => {
 
   return (
     <div className="lunch-cont">
-      <p>
-        Need to be back by: <strong>{returnTime}</strong>
-      </p>
+      {returnTime && (
+        <p>
+          Need to be back by: <strong>{returnTime}</strong>
+        </p>
+      )}
       {!finalVote &&
         lunches
           .sort((a: any, b: any) =>
