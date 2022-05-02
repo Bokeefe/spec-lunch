@@ -1,6 +1,6 @@
 import { faComments } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { LegacyRef, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Chat.css";
 
 interface ChatProps {
@@ -25,7 +25,7 @@ export const Chat: React.FC<ChatProps> = ({ socket, name }) => {
       });
       scrollToBottom();
     });
-  }, []);
+  }, [socket]);
 
   const handleChatToggle = () => {
     setState((prevState) => ({

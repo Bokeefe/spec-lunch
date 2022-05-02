@@ -3,7 +3,6 @@ const express = require("express");
 const server = require("http").createServer(app);
 const storage = require("./server/storage.json");
 const fs = require("fs");
-const faker = require("faker");
 console.log(__dirname);
 app.use(express.static(__dirname + "/build"));
 
@@ -86,8 +85,6 @@ io.on("connection", (socket) => {
 
   socket.on("disconnect", (socket) => {
     const everyoneLeft = io.sockets.adapter.rooms.size === 0;
-    console.log("one client disconnected, every one left?", everyoneLeft);
-
     if (everyoneLeft) {
       initVars();
     }

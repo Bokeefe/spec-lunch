@@ -12,7 +12,7 @@ export const UserForm: React.FC<UserFormProps> = (props) => {
     name: "",
     passengers: "",
     proposedPlace: "",
-    returnTime: "",
+    returnTime: "8",
   };
   const [state, setstate] = useState(initialState);
 

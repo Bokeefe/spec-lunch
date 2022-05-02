@@ -1,8 +1,4 @@
-import {
-  faHotdog,
-  faStar,
-  faStarAndCrescent,
-} from "@fortawesome/free-solid-svg-icons";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
 import "./Vote.css";
