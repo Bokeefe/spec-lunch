@@ -1,4 +1,4 @@
-import { faComments } from "@fortawesome/free-solid-svg-icons";
+import { faCommentDots, faComments } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import "./Chat.css";
@@ -56,7 +56,11 @@ export const Chat: React.FC<ChatProps> = ({ socket, name }) => {
         className={"chat__icon " + (state.chatToggle ? "active" : "")}
         onClick={handleChatToggle}
       >
-        <FontAwesomeIcon icon={faComments} />
+        {state.messages.length % 2 ? (
+          <FontAwesomeIcon icon={faComments} />
+        ) : (
+          <FontAwesomeIcon icon={faCommentDots} />
+        )}
       </div>
       {state.chatToggle && (
         <div>
