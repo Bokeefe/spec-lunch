@@ -1,3 +1,6 @@
-div{
+.count-down {
     margin-left: 10px;
+    position: absolute;
+    top: 0;
+    font-size: 24px;
 }

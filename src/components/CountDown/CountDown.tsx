@@ -12,5 +12,5 @@ export const CountDown: React.FC<CountDownProps> = ({ socket }) => {
     });
   }, [socket]);
 
-  return <div>count down: {count}</div>;
+  return <div className="count-down">count down: {count}</div>;
 };
