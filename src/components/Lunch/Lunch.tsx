@@ -32,28 +32,42 @@ export const Lunch: React.FC<LunchProps> = ({ socket, lunchUser }) => {
   return (
     <div className="lunch-cont">
       {returnTime && (
-        <p>
-          Need to be back by: <strong>{returnTime}</strong>
-        </p>
+        <div className="section">
+          <p>
+            Need to be back by: <strong>{returnTime}</strong>
+          </p>
+        </div>
       )}
-      {!finalVote &&
-        lunches
-          .sort((a: any, b: any) =>
-            a.proposedPlace.localeCompare(b.proposedPlace)
-          )
-          .filter((lunch: any) => lunch.proposedPlace.length)
-          .map((lunch) => (
-            <>
-              <Vote
-                socket={socket}
-                vote={lunch}
-                key={Math.random().toString()}
-                lunchUser={lunchUser}
-              />
-            </>
-          ))}
-      {finalVote && <FinalVote finalVote={finalVote} />}
-      {lunches.length && <Rides rides={lunches} />}
+      {!finalVote && (
+        <div className="section">
+          {lunches
+            .sort((a: any, b: any) =>
+              a.proposedPlace.localeCompare(b.proposedPlace)
+            )
+            .filter((lunch: any) => lunch.proposedPlace.length)
+            .map((lunch) => (
+              <>
+                <Vote
+                  socket={socket}
+                  vote={lunch}
+                  key={Math.random().toString()}
+                  lunchUser={lunchUser}
+                />
+              </>
+            ))}
+        </div>
+      )}
+
+      {finalVote && (
+        <div className="section">
+          <FinalVote finalVote={finalVote} />
+        </div>
+      )}
+      {lunches.length && (
+        <div className="section">
+          <Rides rides={lunches} />
+        </div>
+      )}
     </div>
   );
 };

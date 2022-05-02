@@ -14,28 +14,28 @@ export const UserForm: React.FC<UserFormProps> = (props) => {
     proposedPlace: "",
     returnTime: "8",
   };
-  const [state, setstate] = useState(initialState);
+  const [state, setState] = useState(initialState);
 
   useEffect(() => {
     const name = localStorage.getItem("name");
-    setstate({ ...state, name: name ? name : "" });
-  }, []);
+    setState({ ...state, name: name ? name : "" });
+  }, [props]);
 
   const handleNameChange = (event: any) => {
     localStorage.setItem("name", event.target.value);
-    setstate({ ...state, name: event.target.value });
+    setState({ ...state, name: event.target.value });
   };
 
   const handlePassengerChange = (passengers: string) => {
-    setstate({ ...state, passengers });
+    setState({ ...state, passengers });
   };
 
   const handleReturnTimeChange = (returnTime: string) => {
-    setstate({ ...state, returnTime });
+    setState({ ...state, returnTime });
   };
 
   const handleProposedPlaceChange = (proposedPlace: string) => {
-    setstate({ ...state, proposedPlace });
+    setState({ ...state, proposedPlace });
   };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {

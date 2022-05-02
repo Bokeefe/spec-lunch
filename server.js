@@ -16,7 +16,7 @@ const PORT = 8080;
 const storagePath = "./server/storage.json";
 let lunchGroup = [];
 let votes = {};
-const timeSetting = 60;
+const timeSetting = 600;
 let secondsLeft = timeSetting;
 
 const initVars = () => {
@@ -119,25 +119,6 @@ const endTheVote = () => {
   });
 
   return lunchGroup.sort((a, b) => a.votes - b.votes).reverse();
-};
-const tallyVotes = (newVote) => {
-  if (newVote) {
-    votes[newVote.name] = newVote.vote;
-  }
-  const voteTally = {};
-  for (const vote in votes) {
-    if (voteTally[votes[vote]] === undefined) {
-      voteTally[votes[vote]] = 1;
-    } else {
-      voteTally[votes[vote]]++;
-    }
-  }
-  return lunchGroup.forEach((lunch) => {
-    lunch.votes =
-      voteTally[lunch.proposedPlace] !== undefined
-        ? voteTally[lunch.proposedPlace]
-        : 0;
-  });
 };
 
 app.get("/", (req, res) => {

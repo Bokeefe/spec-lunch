@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./CountDown.css";
 interface CountDownProps {
   socket: any;
 }
