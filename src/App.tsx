@@ -18,9 +18,6 @@ function App() {
     socket.on("connection", () => {
       console.log("connected");
     });
-    socket.on("endVote", (finalVote) => {
-      window.confirm(finalVote);
-    });
   }, []);
 
   const handleUserForm = (form: any) => {

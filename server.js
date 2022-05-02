@@ -17,54 +17,16 @@ const PORT = 8080;
 const storagePath = "./server/storage.json";
 let lunchGroup = [];
 let votes = {};
-let secondsLeft = 30;
-const fakeGroup = [
-  {
-    name: faker.name.firstName(),
-    passengers: "0",
-    proposedPlace: faker.random.word(),
-    returnTime: "8",
-    votes: 0,
-  },
-  {
-    name: faker.name.firstName(),
-    passengers: "2",
-    proposedPlace: `${faker.random.word()} shack`,
-    returnTime: "8",
-    votes: 0,
-  },
-  {
-    name: faker.name.firstName(),
-    passengers: "3",
-    proposedPlace: `${faker.name.lastName()}'s ${faker.random.word()}`,
-    returnTime: "2",
-    votes: 0,
-  },
-  {
-    name: faker.name.firstName(),
-    passengers: "0",
-    proposedPlace: `${faker.name.lastName()}'s ${faker.random.word()} house`,
-    returnTime: "4",
-    votes: 0,
-  },
-  {
-    name: faker.name.firstName(),
-    passengers: "0",
-    proposedPlace: faker.random.word(),
-    returnTime: "8",
-    votes: 0,
-  },
-];
+const timeSetting = 600;
+let secondsLeft = timeSetting;
 
 const initVars = () => {
   lunchGroup = [];
   votes = {};
-  secondsLeft = 30;
+  secondsLeft = timeSetting;
 };
 
 io.on("connection", (socket) => {
-  // const useMock = socket.request.headers.referer.startsWith("http://localhost");
-  // if (useMock) lunchGroup = fakeGroup;
   setInterval(() => {
     io.emit(
       "countDown",
@@ -87,7 +49,7 @@ io.on("connection", (socket) => {
       lunchGroup.push({ ...lunch, votes: 0 });
     }
     io.emit("lunchRes", lunchGroup);
-    if (secondsLeft === 30) {
+    if (secondsLeft === timeSetting) {
       startTimer();
     }
   });
@@ -138,8 +100,7 @@ const startTimer = () => {
       secondsLeft--;
     } else {
       secondsLeft = 0;
-
-      io.emit("endVote", `Final lunch votes: ${JSON.stringify(endTheVote())}`);
+      io.emit("endVote", JSON.stringify(endTheVote()));
     }
   }, 1000);
 };
@@ -160,12 +121,7 @@ const endTheVote = () => {
         : 0;
   });
 
-  return lunchGroup
-    .map((vote) => {
-      return { votes: vote.votes, proposedPlace: vote.proposedPlace };
-    })
-    .sort((a, b) => a.votes - b.votes)
-    .reverse();
+  return lunchGroup.sort((a, b) => a.votes - b.votes).reverse();
 };
 const tallyVotes = (newVote) => {
   if (newVote) {
