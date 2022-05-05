@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight, faHotdog } from "@fortawesome/free-solid-svg-icons";
 import React, { FormEvent, useEffect, useState } from "react";
 import "./UserForm.css";
-
+import { punishments } from "./punishments";
 interface UserFormProps {
   onSubmit: Function;
 }
@@ -19,9 +19,19 @@ export const UserForm: React.FC<UserFormProps> = (props) => {
   useEffect(() => {
     const name = localStorage.getItem("name");
     setState({ ...state, name: name ? name : "" });
+    console.log();
   }, [props]);
 
   const handleNameChange = (event: any) => {
+    const problemChildren = ["dan", "notdan", "zapfel", "daniel"];
+    const isProblemChild = problemChildren.includes(
+      event.target.value.toLowerCase()
+    );
+    if (isProblemChild) {
+      alert(
+        `${event.target.value}: You have been flagged as a problematc user of this application.\n Please attempt to behave.`
+      );
+    }
     localStorage.setItem("name", event.target.value);
     setState({ ...state, name: event.target.value });
   };
@@ -35,6 +45,19 @@ export const UserForm: React.FC<UserFormProps> = (props) => {
   };
 
   const handleProposedPlaceChange = (proposedPlace: string) => {
+    const placeBalcklist = ["butts", "rump", "butt", "rumps", "ass", "@$$"];
+    const beenThereDoneThat = placeBalcklist.includes(
+      proposedPlace.toLowerCase()
+    );
+    if (beenThereDoneThat) {
+      window.confirm(
+        `${proposedPlace} is not a viable place. ${
+          punishments[Math.floor(Math.random() * punishments.length + 0)]
+        }`
+      );
+
+      window.location.href = "/";
+    }
     setState({ ...state, proposedPlace });
   };
 
@@ -82,7 +105,7 @@ export const UserForm: React.FC<UserFormProps> = (props) => {
               type="text"
               id="place"
               placeholder="ex: Jabos"
-              onChange={(e) => handleProposedPlaceChange(e.target.value)}
+              onBlur={(e) => handleProposedPlaceChange(e.target.value)}
             />
           </div>
           <div className="field-cont container">
