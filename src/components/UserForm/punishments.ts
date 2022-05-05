@@ -10,4 +10,7 @@ export const punishments = [
   "Fuel access revoked.",
   "Bathroom access revoked.",
   "Lunch comitttee will convene privately about your behavior.",
+  "Your direct deposit has been changed to Brendan's account",
+  "You will be paying for everyone's lunch today.",
+  "This is not in keeping with lunch committee's core values.",
 ];

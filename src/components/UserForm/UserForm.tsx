@@ -23,13 +23,13 @@ export const UserForm: React.FC<UserFormProps> = (props) => {
   }, [props]);
 
   const handleNameChange = (event: any) => {
-    const problemChildren = ["dan", "notdan", "zapfel", "daniel"];
+    const problemChildren = ["dan", "notdan", "zapfel", "daniel", "brandon"];
     const isProblemChild = problemChildren.includes(
       event.target.value.toLowerCase()
     );
     if (isProblemChild) {
       alert(
-        `${event.target.value}: You have been flagged as a problematc user of this application.\n Please attempt to behave.`
+        `${event.target.value}: You have been flagged as a problematc user of this application.\n Please attempt to behave while using this application.`
       );
     }
     localStorage.setItem("name", event.target.value);
@@ -45,13 +45,21 @@ export const UserForm: React.FC<UserFormProps> = (props) => {
   };
 
   const handleProposedPlaceChange = (proposedPlace: string) => {
-    const placeBalcklist = ["butts", "rump", "butt", "rumps", "ass", "@$$"];
+    const placeBalcklist = [
+      "butts",
+      "rump",
+      "butt",
+      "rumps",
+      "ass",
+      "@$$",
+      "twin peaks",
+    ];
     const beenThereDoneThat = placeBalcklist.includes(
       proposedPlace.toLowerCase()
     );
     if (beenThereDoneThat) {
       window.confirm(
-        `${proposedPlace} is not a viable place. ${
+        `${proposedPlace} is not a viable place for lunch. \n ${
           punishments[Math.floor(Math.random() * punishments.length + 0)]
         }`
       );

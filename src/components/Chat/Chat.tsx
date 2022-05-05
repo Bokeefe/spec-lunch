@@ -19,6 +19,28 @@ export const Chat: React.FC<ChatProps> = ({ socket, name }) => {
 
   useEffect(() => {
     socket.on("newMessage", (message: any) => {
+      if (message.name !== "Brendan") {
+        message.message = message.message.replace("butt", "Dan's mom's booty");
+        message.message = message.message.replace(
+          "butts",
+          "everyone in Dan's ancestry's booties"
+        );
+        message.message = message.message.replace("Spectrum", "the nice place");
+        message.message = message.message.replace(
+          "Charter",
+          "our benevolent employer"
+        );
+        message.message = message.message.replace("fuck", "frick");
+        message.message = message.message.replace(
+          "free speech",
+          "Brendan's gospel"
+        );
+        message.message = message.message.replace(
+          "Tom Rutledge",
+          "Papa Spectrum"
+        );
+      }
+
       setState((prevState) => {
         const messages = prevState.messages.concat(message);
         return { ...prevState, messages };
